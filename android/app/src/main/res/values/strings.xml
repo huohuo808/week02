@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">诉讼策略助手</string>
+    <string name="title_activity_main">诉讼策略助手</string>
+    <string name="package_name">com.litigation.assistant</string>
+    <string name="custom_url_scheme">com.litigation.assistant</string>
+</resources>

@@ -1,0 +1,173 @@
+/* 移动端 APP 模式：全屏显示，去掉桌面展示用的侧栏与手机壳 */
+
+html, body.app-mode {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body.app-mode .stage {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+body.app-mode .intro { display: none !important; }
+
+body.app-mode .phone {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--bg);
+}
+
+/* 顶部状态栏区域适配（刘海屏安全区） */
+body.app-mode .bar {
+  padding-top: env(safe-area-inset-top, 0px);
+  height: calc(42px + env(safe-area-inset-top, 0px));
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  flex-shrink: 0;
+  box-sizing: content-box;
+}
+
+body.app-mode .bar .back {
+  position: absolute;
+  left: 12px;
+  top: calc(50% + env(safe-area-inset-top, 0px) / 2);
+  transform: translateY(-50%);
+  font-size: 30px;
+  line-height: 1;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+}
+
+body.app-mode .bar .dot { display: none; }
+
+.bar-setting {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 19px;
+  color: var(--gold-soft);
+  cursor: pointer;
+  z-index: 2;
+  padding: 4px 8px;
+}
+
+/* 内容区 */
+body.app-mode .screen {
+  flex: 1;
+  padding: 14px 14px calc(76px + env(safe-area-inset-bottom, 0px));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 底部标签栏 */
+body.app-mode .tabs {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  height: calc(62px + env(safe-area-inset-bottom, 0px));
+  box-sizing: content-box;
+  flex-shrink: 0;
+}
+
+/* 服务器设置弹层 */
+.setting-mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 18, 30, .55);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.setting-card {
+  background: #fff;
+  width: 100%;
+  max-width: 360px;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.3);
+}
+.setting-card h3 { font-size: 16px; color: var(--navy); margin-bottom: 6px; }
+.setting-card .tip { font-size: 11.5px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+.setting-card input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 11px 12px;
+  font-size: 13px;
+  color: var(--ink);
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+}
+.setting-card .cur { font-size: 11px; color: var(--ok); margin: 10px 0 4px; word-break: break-all; }
+.setting-card .btnrow { display: flex; gap: 8px; margin-top: 14px; }
+.setting-card button {
+  flex: 1;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.setting-card .btn-main { background: var(--navy); color: #fff; }
+.setting-card .btn-ghost { background: var(--bg); color: var(--navy); }
+.setting-card .btn-del { background: var(--dead-bg); color: var(--dead); }
+.setting-card .hint { font-size: 10.5px; color: var(--muted); margin-top: 12px; line-height: 1.7; }
+
+/* 窄屏适配：流程图与卡片在真机上不溢出 */
+body.app-mode .flowbox { padding: 12px 10px; overflow-x: hidden; }
+body.app-mode .flowrow { gap: 5px; }
+body.app-mode .fl {
+  font-size: 10.5px;
+  padding: 6px 7px;
+  flex: 1 1 42%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+body.app-mode .fl.mid { flex: 1 1 100%; }
+body.app-mode .fa { font-size: 13px; }
+body.app-mode .case-card .ct { flex-wrap: wrap; }
+body.app-mode .case-card .cause { font-size: 10px; }
+
+/* PWA 安装引导 */
+.install-tip {
+  position: fixed; inset: 0; z-index: 9998;
+  background: rgba(10,18,30,.5);
+  display: flex; align-items: flex-end; justify-content: center;
+  padding: 16px;
+}
+.install-tip[style*="display:none"] { display: none; }
+.it-card {
+  background: #fff; border-radius: 16px; padding: 18px 18px 20px;
+  width: 100%; max-width: 400px; position: relative;
+  box-shadow: 0 16px 40px rgba(0,0,0,.3);
+}
+.it-close {
+  position: absolute; right: 12px; top: 10px;
+  font-size: 18px; color: var(--muted); cursor: pointer; padding: 4px 8px;
+}
+.it-card h4 { font-size: 15px; color: var(--navy); margin-bottom: 8px; }
+.it-card p { font-size: 12.5px; color: #4a5563; line-height: 1.8; }
+.it-btn {
+  width: 100%; margin-top: 12px; border: 0; border-radius: 10px;
+  background: var(--navy); color: #fff; padding: 12px; font-size: 14px; font-weight: 600;
+}
+.it-note { font-size: 10.5px; color: var(--muted); margin-top: 10px; line-height: 1.7; }

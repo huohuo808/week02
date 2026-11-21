@@ -1,0 +1,20 @@
+{
+  "name": "诉讼策略助手",
+  "short_name": "诉讼助手",
+  "description": "证据整理、证据推理与庭审策略一体化办案工具",
+  "start_url": "/mobile.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5f3ef",
+  "theme_color": "#16243b",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
